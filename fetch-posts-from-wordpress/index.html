@@ -1,0 +1,22 @@
+<!doctype html>
+    <html lang="it">
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <div id="posts" class="posts">
+            <div class="posts__loading" v-if="posts_flag.loading">Loading...</div>
+            <div class="posts__error" v-if="posts_flag.error">Error!</div>
+            <ul class="posts__items" v-if="posts_flag.loaded">
+                <li class="post__item" v-for="post in posts">
+                    <h2><a target="_blank" v-bind:href="post.guid.rendered">{{ post.title.rendered }}</a></h2>
+                    <p>slug: {{ post.slug }} | id: {{ post.id }}</p>
+                    <div class="post__content" v-html="post.content.rendered"></div>
+                </li>
+            </ul>
+            <div style="cursor: pointer; color: green" class="posts__reload" v-if="posts_flag.reload" v-on:click="get_posts()">RELOAD</div>
+        </div>
+    </body>
+</html>
