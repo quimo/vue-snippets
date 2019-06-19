@@ -1,3 +1,5 @@
+import Vue from '../node_modules/vue/dist/vue.min.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     var posts = new Vue({
         el: "#posts",
